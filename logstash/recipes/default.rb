@@ -3,6 +3,7 @@
 # Recipe:: default
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
+# This will install Logstash
 
 include_recipe "java::default"
 
@@ -43,11 +44,6 @@ template 'Adding Logstash Conf File' do
        :elasticsearchip => "#{node['logstash']['elasticsearchip']}" 
    )
 end
-
-#template 'Adding Logstash Conf File' do
-#  path '/etc/logstash/logstash.yml'
-#  source 'logstash.yml.erb'
-#end
 
 service 'logstash' do
   action [:enable, :start] 

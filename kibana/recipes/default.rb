@@ -34,6 +34,20 @@ template 'Adding Kibana Conf File' do
     )
 end
 
+yum_package 'Installing ' do
+  package_name ['epel-release','httpd-tools','nginx']
+  action :install
+end
+
+template 'Adding nginx conf' do
+  path '/etc/nginx/conf.d/kibana.conf'
+  source 'default.erb'
+  variables(
+    :kibana_server_ip => "#{node['kibana']['kibana_server_ip']}"
+   )
+end
+
+
 service 'kibana' do
  action [:enable, :start]
  subscribes :restart, " template'/etc/kibana/kibana.yml' ", :immediately
