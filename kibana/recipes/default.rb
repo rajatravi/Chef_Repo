@@ -11,7 +11,7 @@ yum_repository 'Adding kibana Key' do
 end
 
 cookbook_file 'copy file' do
-  path 'etc/yum.repos.d/kibana.repo'
+  path '/etc/yum.repos.d/kibana.repo'
   source 'kibana.repo'
 end
 
