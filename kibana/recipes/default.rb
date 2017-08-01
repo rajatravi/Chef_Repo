@@ -47,7 +47,6 @@ template 'Adding nginx conf' do
    )
 end
 
-
 service 'kibana' do
  action [:enable, :start]
  subscribes :restart, " template'/etc/kibana/kibana.yml' ", :immediately
