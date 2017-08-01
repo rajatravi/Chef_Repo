@@ -45,6 +45,11 @@ template 'Adding Logstash Conf File' do
    )
 end
 
+template 'Adding groak pattern for Auth.log' do
+  path '/etc/logstash/conf.d/11-auth-filter.conf'
+  source '11-auth-filter.conf.erb'
+end
+
 service 'logstash' do
   action [:enable, :start] 
 end

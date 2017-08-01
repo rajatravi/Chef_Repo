@@ -28,7 +28,6 @@ template 'Adding Kibana Conf File' do
   path '/etc/filebeat/filebeat.yml'
   source 'filebeat.yml.erb'
   variables(
-    :elasticsearch_ip => "#{node['filebeat']['elasticsearch_ip']}",
     :logstash_ip => "#{node['filebeat']['logstash_ip']}"
     )
 end

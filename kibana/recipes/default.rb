@@ -34,11 +34,6 @@ template 'Adding Kibana Conf File' do
     )
 end
 
-yum_package 'Installing ' do
-  package_name ['epel-release','httpd-tools','nginx']
-  action :install
-end
-
 template 'Adding nginx conf' do
   path '/etc/nginx/conf.d/kibana.conf'
   source 'default.erb'
