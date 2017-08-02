@@ -5,9 +5,9 @@
 # Copyright:: 2017, The Authors, All Rights Reserved
 # This cookbook will install Kibana
 
-yum_repository 'Adding kibana Key' do
-  gpgkey 'https://artifacts.elastic.co/GPG-KEY-elasticsearch'
-  action :create
+execute 'kibana public Key' do
+  command 'rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch'
+  action :run
 end
 
 cookbook_file 'copy file' do

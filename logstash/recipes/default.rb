@@ -7,9 +7,9 @@
 
 include_recipe "java::default"
 
-yum_repository 'Adding logstash Key' do
-  gpgkey 'https://artifacts.elastic.co/GPG-KEY-elasticsearch'
-  action :create
+execute 'Adding logstash public Key' do
+  command 'rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch'
+  action :run
 end
 
 cookbook_file 'File copy' do
@@ -52,5 +52,6 @@ end
 
 service 'logstash' do
   action [:enable, :start] 
+  subscribe :restart "template '/etc/logstash/conf.d/11-auth-filter.conf'", :immediately
 end
 

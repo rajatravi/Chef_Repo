@@ -5,9 +5,9 @@
 # Copyright:: 2017, The Authors, All Rights Reserved.
 include_recipe "java::default"
 
-yum_repository 'Adding elasticsearch Key' do
-  gpgkey 'https://artifacts.elastic.co/GPG-KEY-elasticsearch'
-  action :create
+execute 'Adding elasticsearch public Key' do
+  command 'rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch'
+  action :run
 end
 
 cookbook_file 'copy file' do

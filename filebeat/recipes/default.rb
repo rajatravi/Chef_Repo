@@ -4,9 +4,9 @@
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
-yum_repository 'Adding Filebeat Key' do
-  gpgkey 'https://packages.elastic.co/GPG-KEY-elasticsearch'
-  action :create
+execute 'Adding Filebeat public Key' do
+  command 'rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch'
+  action :run
 end
 
 cookbook_file 'copy file' do
